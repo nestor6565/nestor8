@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+<meta name='google' content='notranslate'>
+<meta name='mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-title' content=''>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name='format-detection' content='telephone=no' />
+<meta name='msapplication-tap-highlight' content='no' />
+<meta http-equiv='Content-Security-Policy' />
+<style type='text/css'>
+*:not(input):not(textarea) {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -webkit-tap-highlight-color: transparent;
+}
+</style>
+<link rel='stylesheet' href='css/library/LianjaWebFramework/LianjaHtmlClient-4.1.1.min.css' type='text/css'/>
+<script type='text/javascript' src='cordova.js'></script>
+
+<script type='text/javascript' src='js/library/LianjaWebFramework/LianjaHtmlClient-4.1.1.min.js'></script>
+<script type='text/javascript' src='js/lib_page1_section1.js'></script>
+<script>
+$(document).bind('mobileinit', function() { 
+  $.support.cors = true;
+  $.mobile.loadingMessageTextVisible = true;
+  $.mobile.allowCrossDomainPages = true;
+  $.mobile.textinput.prototype.options.clearSearchButtonText = 'Reset search';
+  $.mobile.page.prototype.options.theme = 'c';
+  $.mobile.hashListeningEnabled = false;
+  $.mobile.touchOverflowEnabled = true;
+  $.extend($.mobile, { touchOverflowEnabled: true });
+});
+$(window).on('orientationchange', function(event) { 
+  Lianja.handleOrientationChange(event.orientation);
+});
+</script>
+</head>
+<body data-lianja-targetui='phone' class='ui-mobile-viewport mainbody' style='display:none;' >
+<script type='text/javascript'>/*! Hammer.JS - v2.0.7 - 2016-04-22
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+!function(a,b,c,d){"use strict";function e(a,b,c){return setTimeout(j(a,c),b)}function f(a,b,c){return Array.isArray(a)?(g(a,c[b],c),!0):!1}function g(a,b,c){var e;if(a)if(a.forEach)a.forEach(b,c);else if(a.length!==d)for(e=0;e<a.length;)b.call(c,a[e],e,a),e++;else for(e in a)a.hasOwnProperty(e)&&b.call(c,a[e],e,a)}function h(b,c,d){var e="DEPRECATED METHOD: "+c+"\n"+d+" AT \n";return function(){var c=new Error("get-stack-trace"),d=c&&c.stack?c.stack.replace(/^[^\(]+?[\n$]/gm,"").replace(/^\s+at\s+/gm,"").replace(/^Object.<anonymous>\s*\(/gm,"{anonymous}()@"):"Unknown Stack Trace",f=a.console&&(a.console.warn||a.console.log);return f&&f.call(a.console,e,d),b.apply(this,arguments)}}function i(a,b,c){var d,e=b.prototype;d=a.prototype=Object.create(e),d.constructor=a,d._super=e,c&&la(d,c)}function j(a,b){return function(){return a.apply(b,arguments)}}function k(a,b){return typeof a==oa?a.apply(b?b[0]||d:d,b):a}function l(a,b){return a===d?b:a}function m(a,b,c){g(q(b),function(b){a.addEventListener(b,c,!1)})}function n(a,b,c){g(q(b),function(b){a.removeEventListener(b,c,!1)})}function o(a,b){for(;a;){if(a==b)return!0;a=a.parentNode}return!1}function p(a,b){return a.indexOf(b)>-1}function q(a){return a.trim().split(/\s+/g)}function r(a,b,c){if(a.indexOf&&!c)return a.indexOf(b);for(var d=0;d<a.length;){if(c&&a[d][c]==b||!c&&a[d]===b)return d;d++}return-1}function s(a){return Array.prototype.slice.call(a,0)}function t(a,b,c){for(var d=[],e=[],f=0;f<a.length;){var g=b?a[f][b]:a[f];r(e,g)<0&&d.push(a[f]),e[f]=g,f++}return c&&(d=b?d.sort(function(a,c){return a[b]>c[b]}):d.sort()),d}function u(a,b){for(var c,e,f=b[0].toUpperCase()+b.slice(1),g=0;g<ma.length;){if(c=ma[g],e=c?c+f:b,e in a)return e;g++}return d}function v(){return ua++}function w(b){var c=b.ownerDocument||b;return c.defaultView||c.parentWindow||a}function x(a,b){var c=this;this.manager=a,this.callback=b,this.element=a.element,this.target=a.options.inputTarget,this.domHandler=function(b){k(a.options.enable,[a])&&c.handler(b)},this.init()}function y(a){var b,c=a.options.inputClass;return new(b=c?c:xa?M:ya?P:wa?R:L)(a,z)}function z(a,b,c){var d=c.pointers.length,e=c.changedPointers.length,f=b&Ea&&d-e===0,g=b&(Ga|Ha)&&d-e===0;c.isFirst=!!f,c.isFinal=!!g,f&&(a.session={}),c.eventType=b,A(a,c),a.emit("hammer.input",c),a.recognize(c),a.session.prevInput=c}function A(a,b){var c=a.session,d=b.pointers,e=d.length;c.firstInput||(c.firstInput=D(b)),e>1&&!c.firstMultiple?c.firstMultiple=D(b):1===e&&(c.firstMultiple=!1);var f=c.firstInput,g=c.firstMultiple,h=g?g.center:f.center,i=b.center=E(d);b.timeStamp=ra(),b.deltaTime=b.timeStamp-f.timeStamp,b.angle=I(h,i),b.distance=H(h,i),B(c,b),b.offsetDirection=G(b.deltaX,b.deltaY);var j=F(b.deltaTime,b.deltaX,b.deltaY);b.overallVelocityX=j.x,b.overallVelocityY=j.y,b.overallVelocity=qa(j.x)>qa(j.y)?j.x:j.y,b.scale=g?K(g.pointers,d):1,b.rotation=g?J(g.pointers,d):0,b.maxPointers=c.prevInput?b.pointers.length>c.prevInput.maxPointers?b.pointers.length:c.prevInput.maxPointers:b.pointers.length,C(c,b);var k=a.element;o(b.srcEvent.target,k)&&(k=b.srcEvent.target),b.target=k}function B(a,b){var c=b.center,d=a.offsetDelta||{},e=a.prevDelta||{},f=a.prevInput||{};b.eventType!==Ea&&f.eventType!==Ga||(e=a.prevDelta={x:f.deltaX||0,y:f.deltaY||0},d=a.offsetDelta={x:c.x,y:c.y}),b.deltaX=e.x+(c.x-d.x),b.deltaY=e.y+(c.y-d.y)}function C(a,b){var c,e,f,g,h=a.lastInterval||b,i=b.timeStamp-h.timeStamp;if(b.eventType!=Ha&&(i>Da||h.velocity===d)){var j=b.deltaX-h.deltaX,k=b.deltaY-h.deltaY,l=F(i,j,k);e=l.x,f=l.y,c=qa(l.x)>qa(l.y)?l.x:l.y,g=G(j,k),a.lastInterval=b}else c=h.velocity,e=h.velocityX,f=h.velocityY,g=h.direction;b.velocity=c,b.velocityX=e,b.velocityY=f,b.direction=g}function D(a){for(var b=[],c=0;c<a.pointers.length;)b[c]={clientX:pa(a.pointers[c].clientX),clientY:pa(a.pointers[c].clientY)},c++;return{timeStamp:ra(),pointers:b,center:E(b),deltaX:a.deltaX,deltaY:a.deltaY}}function E(a){var b=a.length;if(1===b)return{x:pa(a[0].clientX),y:pa(a[0].clientY)};for(var c=0,d=0,e=0;b>e;)c+=a[e].clientX,d+=a[e].clientY,e++;return{x:pa(c/b),y:pa(d/b)}}function F(a,b,c){return{x:b/a||0,y:c/a||0}}function G(a,b){return a===b?Ia:qa(a)>=qa(b)?0>a?Ja:Ka:0>b?La:Ma}function H(a,b,c){c||(c=Qa);var d=b[c[0]]-a[c[0]],e=b[c[1]]-a[c[1]];return Math.sqrt(d*d+e*e)}function I(a,b,c){c||(c=Qa);var d=b[c[0]]-a[c[0]],e=b[c[1]]-a[c[1]];return 180*Math.atan2(e,d)/Math.PI}function J(a,b){return I(b[1],b[0],Ra)+I(a[1],a[0],Ra)}function K(a,b){return H(b[0],b[1],Ra)/H(a[0],a[1],Ra)}function L(){this.evEl=Ta,this.evWin=Ua,this.pressed=!1,x.apply(this,arguments)}function M(){this.evEl=Xa,this.evWin=Ya,x.apply(this,arguments),this.store=this.manager.session.pointerEvents=[]}function N(){this.evTarget=$a,this.evWin=_a,this.started=!1,x.apply(this,arguments)}function O(a,b){var c=s(a.touches),d=s(a.changedTouches);return b&(Ga|Ha)&&(c=t(c.concat(d),"identifier",!0)),[c,d]}function P(){this.evTarget=bb,this.targetIds={},x.apply(this,arguments)}function Q(a,b){var c=s(a.touches),d=this.targetIds;if(b&(Ea|Fa)&&1===c.length)return d[c[0].identifier]=!0,[c,c];var e,f,g=s(a.changedTouches),h=[],i=this.target;if(f=c.filter(function(a){return o(a.target,i)}),b===Ea)for(e=0;e<f.length;)d[f[e].identifier]=!0,e++;for(e=0;e<g.length;)d[g[e].identifier]&&h.push(g[e]),b&(Ga|Ha)&&delete d[g[e].identifier],e++;return h.length?[t(f.concat(h),"identifier",!0),h]:void 0}function R(){x.apply(this,arguments);var a=j(this.handler,this);this.touch=new P(this.manager,a),this.mouse=new L(this.manager,a),this.primaryTouch=null,this.lastTouches=[]}function S(a,b){a&Ea?(this.primaryTouch=b.changedPointers[0].identifier,T.call(this,b)):a&(Ga|Ha)&&T.call(this,b)}function T(a){var b=a.changedPointers[0];if(b.identifier===this.primaryTouch){var c={x:b.clientX,y:b.clientY};this.lastTouches.push(c);var d=this.lastTouches,e=function(){var a=d.indexOf(c);a>-1&&d.splice(a,1)};setTimeout(e,cb)}}function U(a){for(var b=a.srcEvent.clientX,c=a.srcEvent.clientY,d=0;d<this.lastTouches.length;d++){var e=this.lastTouches[d],f=Math.abs(b-e.x),g=Math.abs(c-e.y);if(db>=f&&db>=g)return!0}return!1}function V(a,b){this.manager=a,this.set(b)}function W(a){if(p(a,jb))return jb;var b=p(a,kb),c=p(a,lb);return b&&c?jb:b||c?b?kb:lb:p(a,ib)?ib:hb}function X(){if(!fb)return!1;var b={},c=a.CSS&&a.CSS.supports;return["auto","manipulation","pan-y","pan-x","pan-x pan-y","none"].forEach(function(d){b[d]=c?a.CSS.supports("touch-action",d):!0}),b}function Y(a){this.options=la({},this.defaults,a||{}),this.id=v(),this.manager=null,this.options.enable=l(this.options.enable,!0),this.state=nb,this.simultaneous={},this.requireFail=[]}function Z(a){return a&sb?"cancel":a&qb?"end":a&pb?"move":a&ob?"start":""}function $(a){return a==Ma?"down":a==La?"up":a==Ja?"left":a==Ka?"right":""}function _(a,b){var c=b.manager;return c?c.get(a):a}function aa(){Y.apply(this,arguments)}function ba(){aa.apply(this,arguments),this.pX=null,this.pY=null}function ca(){aa.apply(this,arguments)}function da(){Y.apply(this,arguments),this._timer=null,this._input=null}function ea(){aa.apply(this,arguments)}function fa(){aa.apply(this,arguments)}function ga(){Y.apply(this,arguments),this.pTime=!1,this.pCenter=!1,this._timer=null,this._input=null,this.count=0}function ha(a,b){return b=b||{},b.recognizers=l(b.recognizers,ha.defaults.preset),new ia(a,b)}function ia(a,b){this.options=la({},ha.defaults,b||{}),this.options.inputTarget=this.options.inputTarget||a,this.handlers={},this.session={},this.recognizers=[],this.oldCssProps={},this.element=a,this.input=y(this),this.touchAction=new V(this,this.options.touchAction),ja(this,!0),g(this.options.recognizers,function(a){var b=this.add(new a[0](a[1]));a[2]&&b.recognizeWith(a[2]),a[3]&&b.requireFailure(a[3])},this)}function ja(a,b){var c=a.element;if(c.style){var d;g(a.options.cssProps,function(e,f){d=u(c.style,f),b?(a.oldCssProps[d]=c.style[d],c.style[d]=e):c.style[d]=a.oldCssProps[d]||""}),b||(a.oldCssProps={})}}function ka(a,c){var d=b.createEvent("Event");d.initEvent(a,!0,!0),d.gesture=c,c.target.dispatchEvent(d)}var la,ma=["","webkit","Moz","MS","ms","o"],na=b.createElement("div"),oa="function",pa=Math.round,qa=Math.abs,ra=Date.now;la="function"!=typeof Object.assign?function(a){if(a===d||null===a)throw new TypeError("Cannot convert undefined or null to object");for(var b=Object(a),c=1;c<arguments.length;c++){var e=arguments[c];if(e!==d&&null!==e)for(var f in e)e.hasOwnProperty(f)&&(b[f]=e[f])}return b}:Object.assign;var sa=h(function(a,b,c){for(var e=Object.keys(b),f=0;f<e.length;)(!c||c&&a[e[f]]===d)&&(a[e[f]]=b[e[f]]),f++;return a},"extend","Use `assign`."),ta=h(function(a,b){return sa(a,b,!0)},"merge","Use `assign`."),ua=1,va=/mobile|tablet|ip(ad|hone|od)|android/i,wa="ontouchstart"in a,xa=u(a,"PointerEvent")!==d,ya=wa&&va.test(navigator.userAgent),za="touch",Aa="pen",Ba="mouse",Ca="kinect",Da=25,Ea=1,Fa=2,Ga=4,Ha=8,Ia=1,Ja=2,Ka=4,La=8,Ma=16,Na=Ja|Ka,Oa=La|Ma,Pa=Na|Oa,Qa=["x","y"],Ra=["clientX","clientY"];x.prototype={handler:function(){},init:function(){this.evEl&&m(this.element,this.evEl,this.domHandler),this.evTarget&&m(this.target,this.evTarget,this.domHandler),this.evWin&&m(w(this.element),this.evWin,this.domHandler)},destroy:function(){this.evEl&&n(this.element,this.evEl,this.domHandler),this.evTarget&&n(this.target,this.evTarget,this.domHandler),this.evWin&&n(w(this.element),this.evWin,this.domHandler)}};var Sa={mousedown:Ea,mousemove:Fa,mouseup:Ga},Ta="mousedown",Ua="mousemove mouseup";i(L,x,{handler:function(a){var b=Sa[a.type];b&Ea&&0===a.button&&(this.pressed=!0),b&Fa&&1!==a.which&&(b=Ga),this.pressed&&(b&Ga&&(this.pressed=!1),this.callback(this.manager,b,{pointers:[a],changedPointers:[a],pointerType:Ba,srcEvent:a}))}});var Va={pointerdown:Ea,pointermove:Fa,pointerup:Ga,pointercancel:Ha,pointerout:Ha},Wa={2:za,3:Aa,4:Ba,5:Ca},Xa="pointerdown",Ya="pointermove pointerup pointercancel";a.MSPointerEvent&&!a.PointerEvent&&(Xa="MSPointerDown",Ya="MSPointerMove MSPointerUp MSPointerCancel"),i(M,x,{handler:function(a){var b=this.store,c=!1,d=a.type.toLowerCase().replace("ms",""),e=Va[d],f=Wa[a.pointerType]||a.pointerType,g=f==za,h=r(b,a.pointerId,"pointerId");e&Ea&&(0===a.button||g)?0>h&&(b.push(a),h=b.length-1):e&(Ga|Ha)&&(c=!0),0>h||(b[h]=a,this.callback(this.manager,e,{pointers:b,changedPointers:[a],pointerType:f,srcEvent:a}),c&&b.splice(h,1))}});var Za={touchstart:Ea,touchmove:Fa,touchend:Ga,touchcancel:Ha},$a="touchstart",_a="touchstart touchmove touchend touchcancel";i(N,x,{handler:function(a){var b=Za[a.type];if(b===Ea&&(this.started=!0),this.started){var c=O.call(this,a,b);b&(Ga|Ha)&&c[0].length-c[1].length===0&&(this.started=!1),this.callback(this.manager,b,{pointers:c[0],changedPointers:c[1],pointerType:za,srcEvent:a})}}});var ab={touchstart:Ea,touchmove:Fa,touchend:Ga,touchcancel:Ha},bb="touchstart touchmove touchend touchcancel";i(P,x,{handler:function(a){var b=ab[a.type],c=Q.call(this,a,b);c&&this.callback(this.manager,b,{pointers:c[0],changedPointers:c[1],pointerType:za,srcEvent:a})}});var cb=2500,db=25;i(R,x,{handler:function(a,b,c){var d=c.pointerType==za,e=c.pointerType==Ba;if(!(e&&c.sourceCapabilities&&c.sourceCapabilities.firesTouchEvents)){if(d)S.call(this,b,c);else if(e&&U.call(this,c))return;this.callback(a,b,c)}},destroy:function(){this.touch.destroy(),this.mouse.destroy()}});var eb=u(na.style,"touchAction"),fb=eb!==d,gb="compute",hb="auto",ib="manipulation",jb="none",kb="pan-x",lb="pan-y",mb=X();V.prototype={set:function(a){a==gb&&(a=this.compute()),fb&&this.manager.element.style&&mb[a]&&(this.manager.element.style[eb]=a),this.actions=a.toLowerCase().trim()},update:function(){this.set(this.manager.options.touchAction)},compute:function(){var a=[];return g(this.manager.recognizers,function(b){k(b.options.enable,[b])&&(a=a.concat(b.getTouchAction()))}),W(a.join(" "))},preventDefaults:function(a){var b=a.srcEvent,c=a.offsetDirection;if(this.manager.session.prevented)return void b.preventDefault();var d=this.actions,e=p(d,jb)&&!mb[jb],f=p(d,lb)&&!mb[lb],g=p(d,kb)&&!mb[kb];if(e){var h=1===a.pointers.length,i=a.distance<2,j=a.deltaTime<250;if(h&&i&&j)return}return g&&f?void 0:e||f&&c&Na||g&&c&Oa?this.preventSrc(b):void 0},preventSrc:function(a){this.manager.session.prevented=!0,a.preventDefault()}};var nb=1,ob=2,pb=4,qb=8,rb=qb,sb=16,tb=32;Y.prototype={defaults:{},set:function(a){return la(this.options,a),this.manager&&this.manager.touchAction.update(),this},recognizeWith:function(a){if(f(a,"recognizeWith",this))return this;var b=this.simultaneous;return a=_(a,this),b[a.id]||(b[a.id]=a,a.recognizeWith(this)),this},dropRecognizeWith:function(a){return f(a,"dropRecognizeWith",this)?this:(a=_(a,this),delete this.simultaneous[a.id],this)},requireFailure:function(a){if(f(a,"requireFailure",this))return this;var b=this.requireFail;return a=_(a,this),-1===r(b,a)&&(b.push(a),a.requireFailure(this)),this},dropRequireFailure:function(a){if(f(a,"dropRequireFailure",this))return this;a=_(a,this);var b=r(this.requireFail,a);return b>-1&&this.requireFail.splice(b,1),this},hasRequireFailures:function(){return this.requireFail.length>0},canRecognizeWith:function(a){return!!this.simultaneous[a.id]},emit:function(a){function b(b){c.manager.emit(b,a)}var c=this,d=this.state;qb>d&&b(c.options.event+Z(d)),b(c.options.event),a.additionalEvent&&b(a.additionalEvent),d>=qb&&b(c.options.event+Z(d))},tryEmit:function(a){return this.canEmit()?this.emit(a):void(this.state=tb)},canEmit:function(){for(var a=0;a<this.requireFail.length;){if(!(this.requireFail[a].state&(tb|nb)))return!1;a++}return!0},recognize:function(a){var b=la({},a);return k(this.options.enable,[this,b])?(this.state&(rb|sb|tb)&&(this.state=nb),this.state=this.process(b),void(this.state&(ob|pb|qb|sb)&&this.tryEmit(b))):(this.reset(),void(this.state=tb))},process:function(a){},getTouchAction:function(){},reset:function(){}},i(aa,Y,{defaults:{pointers:1},attrTest:function(a){var b=this.options.pointers;return 0===b||a.pointers.length===b},process:function(a){var b=this.state,c=a.eventType,d=b&(ob|pb),e=this.attrTest(a);return d&&(c&Ha||!e)?b|sb:d||e?c&Ga?b|qb:b&ob?b|pb:ob:tb}}),i(ba,aa,{defaults:{event:"pan",threshold:10,pointers:1,direction:Pa},getTouchAction:function(){var a=this.options.direction,b=[];return a&Na&&b.push(lb),a&Oa&&b.push(kb),b},directionTest:function(a){var b=this.options,c=!0,d=a.distance,e=a.direction,f=a.deltaX,g=a.deltaY;return e&b.direction||(b.direction&Na?(e=0===f?Ia:0>f?Ja:Ka,c=f!=this.pX,d=Math.abs(a.deltaX)):(e=0===g?Ia:0>g?La:Ma,c=g!=this.pY,d=Math.abs(a.deltaY))),a.direction=e,c&&d>b.threshold&&e&b.direction},attrTest:function(a){return aa.prototype.attrTest.call(this,a)&&(this.state&ob||!(this.state&ob)&&this.directionTest(a))},emit:function(a){this.pX=a.deltaX,this.pY=a.deltaY;var b=$(a.direction);b&&(a.additionalEvent=this.options.event+b),this._super.emit.call(this,a)}}),i(ca,aa,{defaults:{event:"pinch",threshold:0,pointers:2},getTouchAction:function(){return[jb]},attrTest:function(a){return this._super.attrTest.call(this,a)&&(Math.abs(a.scale-1)>this.options.threshold||this.state&ob)},emit:function(a){if(1!==a.scale){var b=a.scale<1?"in":"out";a.additionalEvent=this.options.event+b}this._super.emit.call(this,a)}}),i(da,Y,{defaults:{event:"press",pointers:1,time:251,threshold:9},getTouchAction:function(){return[hb]},process:function(a){var b=this.options,c=a.pointers.length===b.pointers,d=a.distance<b.threshold,f=a.deltaTime>b.time;if(this._input=a,!d||!c||a.eventType&(Ga|Ha)&&!f)this.reset();else if(a.eventType&Ea)this.reset(),this._timer=e(function(){this.state=rb,this.tryEmit()},b.time,this);else if(a.eventType&Ga)return rb;return tb},reset:function(){clearTimeout(this._timer)},emit:function(a){this.state===rb&&(a&&a.eventType&Ga?this.manager.emit(this.options.event+"up",a):(this._input.timeStamp=ra(),this.manager.emit(this.options.event,this._input)))}}),i(ea,aa,{defaults:{event:"rotate",threshold:0,pointers:2},getTouchAction:function(){return[jb]},attrTest:function(a){return this._super.attrTest.call(this,a)&&(Math.abs(a.rotation)>this.options.threshold||this.state&ob)}}),i(fa,aa,{defaults:{event:"swipe",threshold:10,velocity:.3,direction:Na|Oa,pointers:1},getTouchAction:function(){return ba.prototype.getTouchAction.call(this)},attrTest:function(a){var b,c=this.options.direction;return c&(Na|Oa)?b=a.overallVelocity:c&Na?b=a.overallVelocityX:c&Oa&&(b=a.overallVelocityY),this._super.attrTest.call(this,a)&&c&a.offsetDirection&&a.distance>this.options.threshold&&a.maxPointers==this.options.pointers&&qa(b)>this.options.velocity&&a.eventType&Ga},emit:function(a){var b=$(a.offsetDirection);b&&this.manager.emit(this.options.event+b,a),this.manager.emit(this.options.event,a)}}),i(ga,Y,{defaults:{event:"tap",pointers:1,taps:1,interval:300,time:250,threshold:9,posThreshold:10},getTouchAction:function(){return[ib]},process:function(a){var b=this.options,c=a.pointers.length===b.pointers,d=a.distance<b.threshold,f=a.deltaTime<b.time;if(this.reset(),a.eventType&Ea&&0===this.count)return this.failTimeout();if(d&&f&&c){if(a.eventType!=Ga)return this.failTimeout();var g=this.pTime?a.timeStamp-this.pTime<b.interval:!0,h=!this.pCenter||H(this.pCenter,a.center)<b.posThreshold;this.pTime=a.timeStamp,this.pCenter=a.center,h&&g?this.count+=1:this.count=1,this._input=a;var i=this.count%b.taps;if(0===i)return this.hasRequireFailures()?(this._timer=e(function(){this.state=rb,this.tryEmit()},b.interval,this),ob):rb}return tb},failTimeout:function(){return this._timer=e(function(){this.state=tb},this.options.interval,this),tb},reset:function(){clearTimeout(this._timer)},emit:function(){this.state==rb&&(this._input.tapCount=this.count,this.manager.emit(this.options.event,this._input))}}),ha.VERSION="2.0.7",ha.defaults={domEvents:!1,touchAction:gb,enable:!0,inputTarget:null,inputClass:null,preset:[[ea,{enable:!1}],[ca,{enable:!1},["rotate"]],[fa,{direction:Na}],[ba,{direction:Na},["swipe"]],[ga],[ga,{event:"doubletap",taps:2},["tap"]],[da]],cssProps:{userSelect:"none",touchSelect:"none",touchCallout:"none",contentZooming:"none",userDrag:"none",tapHighlightColor:"rgba(0,0,0,0)"}};var ub=1,vb=2;ia.prototype={set:function(a){return la(this.options,a),a.touchAction&&this.touchAction.update(),a.inputTarget&&(this.input.destroy(),this.input.target=a.inputTarget,this.input.init()),this},stop:function(a){this.session.stopped=a?vb:ub},recognize:function(a){var b=this.session;if(!b.stopped){this.touchAction.preventDefaults(a);var c,d=this.recognizers,e=b.curRecognizer;(!e||e&&e.state&rb)&&(e=b.curRecognizer=null);for(var f=0;f<d.length;)c=d[f],b.stopped===vb||e&&c!=e&&!c.canRecognizeWith(e)?c.reset():c.recognize(a),!e&&c.state&(ob|pb|qb)&&(e=b.curRecognizer=c),f++}},get:function(a){if(a instanceof Y)return a;for(var b=this.recognizers,c=0;c<b.length;c++)if(b[c].options.event==a)return b[c];return null},add:function(a){if(f(a,"add",this))return this;var b=this.get(a.options.event);return b&&this.remove(b),this.recognizers.push(a),a.manager=this,this.touchAction.update(),a},remove:function(a){if(f(a,"remove",this))return this;if(a=this.get(a)){var b=this.recognizers,c=r(b,a);-1!==c&&(b.splice(c,1),this.touchAction.update())}return this},on:function(a,b){if(a!==d&&b!==d){var c=this.handlers;return g(q(a),function(a){c[a]=c[a]||[],c[a].push(b)}),this}},off:function(a,b){if(a!==d){var c=this.handlers;return g(q(a),function(a){b?c[a]&&c[a].splice(r(c[a],b),1):delete c[a]}),this}},emit:function(a,b){this.options.domEvents&&ka(a,b);var c=this.handlers[a]&&this.handlers[a].slice();if(c&&c.length){b.type=a,b.preventDefault=function(){b.srcEvent.preventDefault()};for(var d=0;d<c.length;)c[d](b),d++}},destroy:function(){this.element&&ja(this,!1),this.handlers={},this.session={},this.input.destroy(),this.element=null}},la(ha,{INPUT_START:Ea,INPUT_MOVE:Fa,INPUT_END:Ga,INPUT_CANCEL:Ha,STATE_POSSIBLE:nb,STATE_BEGAN:ob,STATE_CHANGED:pb,STATE_ENDED:qb,STATE_RECOGNIZED:rb,STATE_CANCELLED:sb,STATE_FAILED:tb,DIRECTION_NONE:Ia,DIRECTION_LEFT:Ja,DIRECTION_RIGHT:Ka,DIRECTION_UP:La,DIRECTION_DOWN:Ma,DIRECTION_HORIZONTAL:Na,DIRECTION_VERTICAL:Oa,DIRECTION_ALL:Pa,Manager:ia,Input:x,TouchAction:V,TouchInput:P,MouseInput:L,PointerEventInput:M,TouchMouseInput:R,SingleTouchInput:N,Recognizer:Y,AttrRecognizer:aa,Tap:ga,Pan:ba,Swipe:fa,Pinch:ca,Rotate:ea,Press:da,on:m,off:n,each:g,merge:ta,extend:sa,assign:la,inherit:i,bindFn:j,prefixed:u});var wb="undefined"!=typeof a?a:"undefined"!=typeof self?self:{};wb.Hammer=ha,"function"==typeof define&&define.amd?define(function(){return ha}):"undefined"!=typeof module&&module.exports?module.exports=ha:a[c]=ha}(window,document,"Hammer");
+//# sourceMappingURL=hammer.min.js.map</script><script type='text/javascript'>!function(){var a=window.MutationObserver||window.WebKitMutationObserver,b="ontouchstart"in window||window.DocumentTouch&&document instanceof DocumentTouch,c=void 0!==document.documentElement.style["touch-action"]||document.documentElement.style["-ms-touch-action"];if(!c&&b&&a){window.Hammer=window.Hammer||{};var d=/touch-action[:][\s]*(none)[^;'"]*/,e=/touch-action[:][\s]*(manipulation)[^;'"]*/,f=/touch-action/,g=navigator.userAgent.match(/(iPad|iPhone|iPod)/g)?!0:!1,h=function(){try{var a=document.createElement("canvas");return!(!window.WebGLRenderingContext||!a.getContext("webgl")&&!a.getContext("experimental-webgl"))}catch(b){return!1}}(),i=h&&g;window.Hammer.time={getTouchAction:function(a){return this.checkStyleString(a.getAttribute("style"))},checkStyleString:function(a){return f.test(a)?d.test(a)?"none":e.test(a)?"manipulation":!0:void 0},shouldHammer:function(a){var b=this.hasParent(a.target);return b&&(!i||Date.now()-a.target.lastStart<125)?b:!1},touchHandler:function(a){var b=a.target.getBoundingClientRect(),c=b.top!==this.pos.top||b.left!==this.pos.left,d=this.shouldHammer(a);("none"===d||c===!1&&"manipulation"===d)&&("touchend"===a.type&&(a.target.focus(),setTimeout(function(){a.target.click()},0)),a.preventDefault()),this.scrolled=!1,delete a.target.lastStart},touchStart:function(a){this.pos=a.target.getBoundingClientRect(),i&&this.hasParent(a.target)&&(a.target.lastStart=Date.now())},styleWatcher:function(a){a.forEach(this.styleUpdater,this)},styleUpdater:function(a){if(a.target.updateNext)return void(a.target.updateNext=!1);var b=this.getTouchAction(a.target);return b?void("none"!==b&&(a.target.hadTouchNone=!1)):void(!b&&(a.oldValue&&this.checkStyleString(a.oldValue)||a.target.hadTouchNone)&&(a.target.hadTouchNone=!0,a.target.updateNext=!1,a.target.setAttribute("style",a.target.getAttribute("style")+" touch-action: none;")))},hasParent:function(a){for(var b,c=a;c&&c.parentNode;c=c.parentNode)if(b=this.getTouchAction(c))return b;return!1},installStartEvents:function(){document.addEventListener("touchstart",this.touchStart.bind(this)),document.addEventListener("mousedown",this.touchStart.bind(this))},installEndEvents:function(){document.addEventListener("touchend",this.touchHandler.bind(this),!0),document.addEventListener("mouseup",this.touchHandler.bind(this),!0)},installObserver:function(){this.observer=new a(this.styleWatcher.bind(this)).observe(document,{subtree:!0,attributes:!0,attributeOldValue:!0,attributeFilter:["style"]})},install:function(){this.installEndEvents(),this.installStartEvents(),this.installObserver()}},window.Hammer.time.install()}}();</script><style>
+div.centered-loginpage 
+{
+    text-align: center;
+	height:auto;
+	width:auto;
+	background:transparent;
+}
+
+div.centered-loginpage table 
+{
+    margin: 0 auto; 
+    text-align: left;
+	text-shadow: 0 0 0;
+	color: white;
+}
+#loginpage-signin {
+	color:#fafafa;
+}
+#loginpage-username {
+	font-size:120%;
+}
+#loginpage-password {
+	font-size:120%;
+}
+.loginpage-title {
+	font-size:300%;
+	line-height:40px;
+	font-weight:bold;
+}
+.loginpage-subtitle {
+	font-size:200%;
+}
+.loginpage-input {
+	background: transparent !important;
+    border: 0 !important;
+	-webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0) !important;
+}
+</style>
+<div data-role="page" id="lianja-loginpage">
+  <div data-role="main" class="ui-content" style="padding:25%;position:absolute;top:0;bottom:0;left:0;right:0;background-image: url(login.jpg) !important;background-size: 100% 100%;
+    background-repeat: no-repeat;">
+	<div style="position:absolute;top:50px;bottom:40px;left:0;right:0;">
+		<div class="centered-loginpage">
+			<table>
+				<tr>
+					<td>
+						<img src="icon.png" style="height:80px;max-height:80px;width:80px;max-width:80px;"/>
+					</td>
+					<td colspan="2">
+						<div style="height:80px;max-height:80px;">
+							<p class="loginpage-title">Lianja&trade;</p>
+							<p class="loginpage-subtitle">Cloud Login</p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div style="height:10px;" />
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<div style="width:100%;background:white;border-radius:5px;border:5px white solid;">
+							<table style="width:100%;background:transparent;">
+								<tr>
+									<td style="border-bottom:1px lightgray solid;">
+										<input id="username" data-role="none" type="text" placeholder="User ID" class="loginpage-input"/>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px lightgray solid;">
+										<input id="password" data-role="none" type="password" placeholder="Password" class="loginpage-input"/>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div style="height:10px;" />
+					</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<div style="width:100%;background:transparent;border:5px transparent solid;">
+							<button ontouchend="lianja_login()" data-role="none" id="loginpage-signin" type="button" class="btn btn-success" style="width:100%">Sign In</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div style="position:absolute;bottom:0px;left:0;right:0;height:40px;background-color:#333;color:lightgray;text-shadow: 0 0 0 #fff;line-height:38px;">
+	<table style="width:100%">
+	<tr>
+	<td align="center" width="50%"><span><a href='' style='color:lightgray;text-decoration:initial;' onclick="Lianja.App.setCurrentPageID('lianja-loginpage');Lianja.showDialogPanel('Learn More', 'lib:/login_learn_more.rsp', 500)">Learn More</a></span></td><td align="center"><span style="border-left: 1px solid lightgray;"></span></td><td align="center" width="50%"><span><a href='' style='color:lightgray;text-decoration:initial;' onclick="Lianja.App.setCurrentPageID('lianja-loginpage');Lianja.showDialogPanel('Forgot Password','lib:/login_forgot_password.rsp', 500)">Forgot Password?</a></span></td>
+	</tr>
+	</table>
+	</div>
+  </div>
+  <div data-role='panel' id='LianjaDialogPanel-lianja-loginpage' data-swipe-close='true' data-position='right' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'>
+    <div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelHeader-lianja-loginpage'>Title</h1></div>
+    <div id='LianjaDialogPanelContent-lianja-loginpage' style='overflow:auto;-webkit-overflow-scrolling:touch;position:absolute;top:42px;bottom:52px;width:100%'><br></div>
+    <table height='50px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:15px;">
+	<tr>
+	<td width='50%' class='lianja-ui-flatbuttoncontainer'>
+		<div class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this);' >Cancel</div>
+	</td>
+	<td width='50%' class='lianja-ui-flatbuttoncontainer'>
+		<div class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this);' >Done</div>
+	</td>
+	</tr>
+	</table>
+  </div>
+</div> 
+
+<script>
+$(function() {
+    $("#username").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $("#loginpage-password").focus();
+            return false;
+        } else {
+            return true;
+        }
+    });
+    $("#password").keypress(function (e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            lianja_login();
+            return false;
+        } else {
+            return true;
+        }
+    });
+});
+
+function lianja_login()
+{
+	var username = $("#username").val();
+	var pw = $("#password").val();
+	Lianja.createCookie("LIANJA_USER", username, 2);
+	$("#loginpage-password").focus();
+	$("#loginpage-username").focus();
+	Lianja.login(username, pw);
+	return false;
+}
+</script>
+
+<!-- mainpage start -->
+<div class='ui-lianja-stretchlastsection ui-lianja-headervisible ui-responsive-panel ui-page ui-page-panel' data-lianja-refresh-when-activated='false' data-lianja-margin='0' data-lianja-query-form='false' data-lianja-hideheader='false' data-lianja-phone-navbar='true' data-lianja-navbar-height='0' data-lianja-stretchfixedheight='0' data-lianja-nomargin='false' data-lianja-hidenavbar='false' data-lianja-stretchlastsectionminheight='0' data-lianja-height-offset='20' data-role='page' data-dom-cache='true' data-url='customers' data-lianja-page-autolayoutlist='' data-lianja-page-sectionlist='customers-section1' data-lianja-uistates='' data-lianja-page-type='collapsible' data-lianja-searchkey-section='customers-section1' id='customers' data-theme='c' data-content-theme='c' data-lianja-headerheight='40' data-lianja-footerheight='0'>
+<div data-role='panel' id='customers_pagenavigationmenu' data-position='right' data-display='overlay' data-theme='a' class='ui-lianja-scrollable ui-lianja-pageheader-item-top ui-panel ui-panel-position-right' style='opacity:0.8 !important; top:40px;width:auto;min-width:300px;'>
+<ul data-role='listview' data-inset='false' data-theme='a' data-icon='false' data-corners='false' data-shadow='false'>
+<li data-role='list-divider' data-theme='a' data-icon='false' data-corners='false' data-shadow='false' style='font-weight:bold !important;color:white;background-color:gray;'>
+PAGE NAVIGATION</li>
+<li class='ui-lianja-permread-customers ui-lianja-transparent-listitem-selected-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:customers");return false;'>Customers</a></li>
+<li class='ui-lianja-permread-orders ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orders");return false;'>Orders</a></li>
+<li class='ui-lianja-permread-orderdetails ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orderdetails");return false;'>Order Details</a></li>
+</ul>
+</div>
+<div data-role='panel' data-history='false' id='LianjaDialogPanelLeft-customers' data-swipe-close='true' data-position='left' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelLeftHeader-customers'>Title</h1></div><div id='LianjaDialogPanelLeftContent-customers' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelLeftButtonGroup-customers' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftCancelBtn-customers' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftDoneBtn-customers' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-role='panel' id='LianjaDialogPanel-customers' data-swipe-close='true' data-position='right' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelHeader-customers'>Title</h1></div><div id='LianjaDialogPanelContent-customers' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelButtonGroup-customers' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelCancelBtn-customers' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelDoneBtn-customers' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-history='false' id='LianjaPopupDialog-customers' data-corners='false' data-position-to='window' data-transition='fade' data-overlay-theme='a' data-theme='c' style='margin:5px !important;padding:0px !important;display:none;'><a href='' onclick='Lianja.hideDialog(this);return false;' data-role='button' data-theme='a' data-iconshadow='false' data-icon='delete' data-iconpos='notext' class='ui-btn-right'></a><div data-role='header' id='LianjaPopupDialogHeaderContainer-customers' data-corners='false' data-theme='a' style='border-top:3px;border-top-left-radius:0px;margin:0 !important;'><h1 id='LianjaPopupDialogHeader-customers' style='margin:0px !important;'></h1></div><div id='LianjaPopupDialogContent-customers' style='top: 42px;bottom: 50px;position: absolute;width: 100%;'><p>This is a simple showDialog popup</p><br></div><table id='LianjaPopupDialogButtonGroup-customers' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:0px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogCancelBtn-customers' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialog(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogDoneBtn-customers' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialog(this)' >Done</div></td></tr></table></div><div data-tap-toggle='false' data-role='header' data-theme='a' data-position='fixed' data-fullscreen='false' style='height:40px !important;background:#212121;color:#ffffff;border-bottom:1px solid #ffa500;' data-id='alwaysvisible' class='ui-grid-lianja-pageheader '>
+<span class='ui-lianja-pageheader-left ui-lianja-pageheader-item' style='height:40px !important;'>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.back();return false;' id='lianja-navigation-left-a' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-left-white' style=''></a></div>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.forward();return false;' id='lianja-navigation-right-a'  data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-right-white' style=''></a></div>
+</span>
+<h1 id='customers-pagetitle' data-lianja-text="Customers" class='ui-lianja-title-phone ui-lianja-pageheader-item' style='position:relative;left:-26px;'>Customers</h1>
+<div class='ui-grid-lianja-pageheader-navbutton ui-grid-lianja-pageheader-navbutton-phone-right ui-lianja-pageheader-item-right' align='center'><a type='button' data-ajax='false' href='' onclick='Lianja.logout();return false;' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-home-white' title='Goto the App Center'></a></div>
+</div>
+<!-- mainpage content start -->
+<div style='top:0px !important' data-lianja-content-bottom='48px' data-lianja-content-margin='0' data-role='content' id='customers-content' data-content-padding-top-bottom='none' class='ui-lianja-content63 ui-lianja-content ui-lianja-notscrollable ui-lianja-hidescrollbar'   style='background-color:#ffffff;color:#ffffff; margin:0px !important;overflow:hidden;' >
+<!-- section start 2 -->
+<div id='customers-section1'   data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-gridlines='true' data-lianja-orderby="" data-lianja-filter="" data-lianja-editable='false' data-lianja-uistates='' data-lianja-gridlines='true' data-lianja-hideheader='true' data-lianja-navbar-height='48' data-lianja-stretchfixedheight='0' data-lianja-query-form='false' data-lianja-cascadedeletes='false' data-lianja-hidenavbar='false' data-lianja-section-pageid='customers' data-lianja-section-type='form' data-lianja-section-searchfield='CUSTOMERS.COMPANYNAME' data-lianja-section-searchfieldtype='C' data-lianja-section-parentid='' data-lianja-section-parentkeytype='' data-lianja-section-parentkeyexpr='' data-lianja-section-childkeyexpr='' data-lianja-section-childlist='' data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-database='southwind' data-lianja-table='customers' data-lianja-section-formitemlist='customers-section1-field1,customers-section1-field2,customers-section1-field3,customers-section1-field4,customers-section1-field5,customers-section1-field6,customers-section1-field7,customers-section1-field8,customers-section1-field9,customers-section1-field10,customers-section1-field11' data-inset='false' data-corners='true' class=' rightside   ui-lianja-noicon ui-lianja-noicontext ui-lianja-ignoreclick ui-lianja-collapsible-nostretch   ui-lianja-scrollable ui-lianja-hidescrollbar ' style='position:relative;overflow-y:hidden !important;overflow-x:auto !important;color:#000000;background-color:#f9f9f9;position:absolute;top:0px;left:0px;right:0px;bottom:48px;' data-lianja-autoheight='true' >
+<!-- section type form -->
+<!-- start of section form -->
+<div id='customers-section1-container-outerframe' data-lianja-yoffset='0' style='height:100%;width:100%;max-width:100%;'>
+<div data-barry='3' id='customers-section1-container-innerframe' style='position:relative;background-color:#f9f9f9;padding:0px;top:0px;'><center><div class="ui-lianja-phonegap-hidden ui-lianja-inherit-colors" data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false" data-shadow="false" style="margin:0 0!important;padding-top:6px;height:34px;max-height:34px;background-color:#333333;color:#bababa;"><a class='ui-lianja-link' data-role='button' onclick='page1_section1_customsectionmenu("Orders");return false;' >Orders</a></div></center><div class='lianja-mobilesearchpanel ui-lianja-phonegap-hidden' style='line-height:42px !important;vertical-align:middle;display:block;height:42px;background-color:#f9f9f9;color:#000000;padding-left:3px;padding-right:3px;' width='100%'><input style='width:100%;height:100%;' type='text' data-type='search' class='ui-lianja-searchpanelitem' id='customers-searchbox' onkeyup='Lianja.onSearchChanged("customers")'></div><!-- start of section formitems -->
+<!-- start section formitem -->
+<div style='height:2px;background-color:#f9f9f9;'></div><table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field1-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Customer ID </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field1'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.customerid' data-lianja-maxlength='5' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field2-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Contact Name </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field2'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.contactname' data-lianja-maxlength='30' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field3-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Company Name </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field3'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.companyname' data-lianja-maxlength='40' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field4-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Contact Title </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field4'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.contacttitle' data-lianja-maxlength='30' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field5-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Address </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field5'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.address' data-lianja-maxlength='60' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field6-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Region </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field6'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.region' data-lianja-maxlength='15' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field7-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">City </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field7'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.city' data-lianja-maxlength='15' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field8-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Postal Code </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field8'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.postalcode' data-lianja-maxlength='10' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field9-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Country </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field9'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.country' data-lianja-maxlength='15' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field10-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Phone </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field10'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.phone' data-lianja-maxlength='24' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- start section formitem -->
+<table  width="100%" cellspacing="0" cellpadding="0" style=';' ><tr style='height:23px;max-height:23px;border-bottom:1px solid #ffffff;border-right:1px solid #ffffff;'><td style='border-bottom:2px solid #f9f9f9;width:160px;min-width:160px;max-width:160px;' align='right'><div id='customers-section1-field11-caption'  style="line-height:23px;height:23px;background-color:#f9f9f9;color:#000000;text-align:right;">Fax </div></td><td width='100%' style='border-bottom:2px solid #f5f5f5;white-space: nowrap;'><div class='ui-lianja-inlineeditor ' style="white-space: nowrap;margin-left:4px;margin-right:4px;font-weight:bold;line-height:23px;height:23px;background-color:#f5f5f5;color:#000000;text-align:left;" id='customers-section1-field11'  data-lianja-formitem-choicelist='' data-lianja-formitem-autosuggest='' data-lianja-formitem-autosuggestheaders='' data-lianja-formitem-autosuggestfields='' data-lianja-formitem-autosuggestcolumn='0' data-lianja-formitem-type='field' data-lianja-controlsource='customers.fax' data-lianja-maxlength='24' data-lianja-readonly='false'    ></div></td></tr></table><!-- end section formitem --><!-- end of section formitems -->
+<div class='ui-lianja-phonegap-hidden ' id='customers-section1-sectionfooter' style='z-index:1;padding-left:0px;position:absolute;left:0px;right:0px;bottom:0px;height:40px;right:0px;left:0px;background-color:#f5f5f5;color:#2489ce;' data-lianja-footer=""><table height='40px' width="100%" cellspacing="0" cellpadding="1px"><tr><td width='33%' class='lianja-ui-flatbuttoncontainer'><div class='lianja-ui-flatbutton lianja-ui-touchable' style='width:100%;line-height:40px;height:40px;' onclick='customers_section1_custommenu("Location");return false;' >Location</div></td><td width='33%' class='lianja-ui-flatbuttoncontainer'><div class='lianja-ui-flatbutton lianja-ui-touchable' style='width:100%;line-height:40px;height:40px;' onclick='customers_section1_custommenu("List");return false;' >List</div></td><td width='33%' class='lianja-ui-flatbuttoncontainer'><div class='lianja-ui-flatbutton-last lianja-ui-touchable' style='width:100%;line-height:40px;height:40px;' onclick='customers_section1_custommenu("Reset");return false;' >Reset</div></td></tr></table></div></div>
+</div>
+<!-- end of section form -->
+</div>
+<!-- section end -->
+</div>
+<!-- mainpage content end -->
+<!-- navbar start -->
+<div id='customers-navbar' style='border:0;background-color:#333333;background-image:none;padding-bottom:0px;' data-tap-toggle='false' data-theme='a' data-role='footer' data-position='fixed' role='contentinfo' style='height:40px;' data-fullscreen='false' data-id='alwaysvisible'>
+<div class='ui-grid-lianja-navbar-mobile'>
+<span id='customers_navbutton_add' class='ui-grid-lianja-navbutton ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=add')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-add-white' title='Add New Record'></a></span>
+<span id='customers_navbutton_delete' class='ui-grid-lianja-navbutton ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=delete')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-delete-white' title='Delete Record'></a></span>
+<span id='customers_navbutton_previous' class='ui-grid-lianja-navbutton ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=previous')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-prev-white' title='Previous Record'></a></span>
+<span id='customers_navbutton_next' class='ui-grid-lianja-navbutton ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=next')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-next-white' title='Next Record'></a></span>
+<span id='customers_navbutton_edit' class='ui-grid-lianja-navbutton ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=edit_phone')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-edit-white' title='Edit Record'></a></span>
+<span style='float:none;display:none;' id='customers_navbutton_save' class='ui-grid-lianja-navbutton ui-navbutton-disabled ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=save_phone')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-save-white' title='Save Changes'></a></span>
+<span style='float:none;display:none;' id='customers_navbutton_cancel' class='ui-grid-lianja-navbutton ui-navbutton-disabled ui-grid-lianja-navbutton-phone' align='center'><a onclick="Lianja.showDocument('page:customers?action=cancel_phone')" rel='external' data-ajax='false'  type='button' data-inline='true' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-cancel-white' title='Undo Changes'></a></span>
+</div>
+</div>
+</div>
+<!-- navbar end --></div>
+<!-- mainpage end -->
+<!-- page -->
+<div class='ui-lianja-stretchlastsection ui-responsive-panel ui-page ui-page-panel ui-lianja-headervisible'  data-lianja-refresh-when-activated='false' data-lianja-margin='0' data-lianja-query-form='false' data-lianja-hideheader='false' data-lianja-phone-navbar='true' data-lianja-nomargin='' data-lianja-stretchfixedheight='0' data-lianja-hidenavbar='true' data-role='page' data-lianja-stretchlastsectionminheight='0' data-lianja-height-offset='20' data-dom-cache='true' data-url='orders' data-lianja-page-autolayoutlist='' data-lianja-page-sectionlist='orders-section1' data-lianja-uistates='' data-lianja-page-type='collapsible' data-lianja-searchkey-section='' id='orders' data-theme='c' data-content-theme='c' data-lianja-headerheight='40' data-lianja-footerheight='0'>
+<div data-role='panel' id='orders_pagenavigationmenu' data-position='right' data-display='overlay' data-theme='a' class='ui-lianja-scrollable ui-lianja-pageheader-item-top ui-panel ui-panel-position-right' style='opacity:0.8 !important; top:40px;width:auto;min-width:300px;'>
+<ul data-role='listview' data-inset='false' data-theme='a' data-icon='false' data-corners='false' data-shadow='false'>
+<li data-role='list-divider' data-theme='a' data-icon='false' data-corners='false' data-shadow='false' style='font-weight:bold !important;color:white;background-color:gray;'>
+PAGE NAVIGATION</li>
+<li class='ui-lianja-permread-customers ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:customers");return false;'>Customers</a></li>
+<li class='ui-lianja-permread-orders ui-lianja-transparent-listitem-selected-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orders");return false;'>Orders</a></li>
+<li class='ui-lianja-permread-orderdetails ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orderdetails");return false;'>Order Details</a></li>
+</ul>
+</div>
+<div data-role='panel' data-history='false' id='LianjaDialogPanelLeft-orders' data-swipe-close='true' data-position='left' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelLeftHeader-orders'>Title</h1></div><div id='LianjaDialogPanelLeftContent-orders' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelLeftButtonGroup-orders' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftCancelBtn-orders' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftDoneBtn-orders' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-role='panel' id='LianjaDialogPanel-orders' data-swipe-close='true' data-position='right' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelHeader-orders'>Title</h1></div><div id='LianjaDialogPanelContent-orders' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelButtonGroup-orders' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelCancelBtn-orders' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelDoneBtn-orders' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-history='false' id='LianjaPopupDialog-orders' data-corners='false' data-position-to='window' data-transition='fade' data-overlay-theme='a' data-theme='c' style='margin:5px !important;padding:0px !important;display:none;'><a href='' onclick='Lianja.hideDialog(this);return false;' data-role='button' data-theme='a' data-iconshadow='false' data-icon='delete' data-iconpos='notext' class='ui-btn-right'></a><div data-role='header' id='LianjaPopupDialogHeaderContainer-orders' data-corners='false' data-theme='a' style='border-top:3px;border-top-left-radius:0px;margin:0 !important;'><h1 id='LianjaPopupDialogHeader-orders' style='margin:0px !important;'></h1></div><div id='LianjaPopupDialogContent-orders' style='top: 42px;bottom: 50px;position: absolute;width: 100%;'><p>This is a simple showDialog popup</p><br></div><table id='LianjaPopupDialogButtonGroup-orders' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:0px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogCancelBtn-orders' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialog(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogDoneBtn-orders' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialog(this)' >Done</div></td></tr></table></div><div data-tap-toggle='false' data-role='header' data-theme='a' data-position='fixed' data-fullscreen='false' style='height:40px !important;background:#212121;color:#ffffff;border-bottom:1px solid #ffa500;' data-id='alwaysvisible' class='ui-grid-lianja-pageheader {ui-lianja-headervisible-android-statusbar}'>
+<span class='ui-lianja-pageheader-left ui-lianja-pageheader-item' style='height:40px !important;'>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.back();return false;' id='lianja-navigation-left-a' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-left-white' style=''></a></div>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.forward();return false;' id='lianja-navigation-right-a'  data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-right-white' style=''></a></div>
+</span>
+<h1 id='orders-pagetitle' data-lianja-text="Orders" class='ui-lianja-title-phone ui-lianja-pageheader-item' style='position:relative;left:-26px;'>Orders</h1>
+<div class='ui-grid-lianja-pageheader-navbutton ui-grid-lianja-pageheader-navbutton-phone-right ui-lianja-pageheader-item-right' align='center'><a type='button' data-ajax='false' href='' onclick='Lianja.logout();return false;' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-home-white' title='Goto the App Center'></a></div>
+</div>
+<!-- content -->
+<div style='top:0px !important' data-lianja-content-bottom='0px' data-lianja-content-margin='0' data-role='content' id='orders-content' data-content-padding-top-bottom='none' class='ui-lianja-content63 ui-lianja-content ui-lianja-notscrollable ui-lianja-hidescrollbar'   style='background-color:#ffffff;color:#ffffff; margin:0px !important;' >
+<!-- section start 2 -->
+<div id='orders-section1'   data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-gridlines='true' data-lianja-orderby="" data-lianja-filter="customerid='{CUSTOMERS.CUSTOMERID}'" data-lianja-editable='false' data-lianja-uistates='' data-lianja-gridlines='true' data-lianja-hideheader='true' data-lianja-navbar-height='0' data-lianja-stretchfixedheight='0' data-lianja-query-form='false' data-lianja-cascadedeletes='false' data-lianja-hidenavbar='false' data-lianja-section-pageid='orders' data-lianja-section-type='grid' data-lianja-section-searchfield='' data-lianja-section-searchfieldtype='' data-lianja-section-parentid='' data-lianja-section-parentkeytype='' data-lianja-section-parentkeyexpr='' data-lianja-section-childkeyexpr='' data-lianja-section-childlist='' data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-database='southwind' data-lianja-table='orders'  data-inset='false' data-corners='true' class=' rightside   ui-lianja-noicon ui-lianja-noicontext ui-lianja-ignoreclick ui-lianja-collapsible-nostretch   ui-lianja-scrollable ui-lianja-hidescrollbar ' style='position:relative;overflow-y:hidden !important;overflow-x:auto !important;color:#000000;background-color:#f9f9f9;position:absolute;top:0px;left:0px;right:0px;bottom:0px;' data-lianja-autoheight='true' >
+<!-- section type grid -->
+<div id='orders-section1-container-outerframe' data-lianja-yoffset='48' style='background-color:#f9f9f9;width:100%;position:absolute;top:0px;bottom:0px;'>
+<div id='orders-section1-container-innerframe' data-lianja-height-adjustment='0' style='background-color:#f9f9f9;margin:0px;margin-bottom:0px;position:position:relative;height:100%;'><center><div class="ui-lianja-phonegap-hidden ui-lianja-inherit-colors" data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false" data-shadow="false" style="margin:0 0!important;padding-top:10px;height:38px;max-height:38px;background-color:#333333;color:#bababa;"><a class='ui-lianja-link' data-role='button' onclick='page1_section1_customsectionmenu("Customers");return false;' >Customers</a><a class='ui-lianja-link' data-role='button' onclick='page1_section1_customsectionmenu("Order Details");return false;' >Order Details</a></div></center><div id='orders-section1-gridcontainer-basecontainer' style='background-color:white;position:absolute;top:48px;bottom:0px;width:100%;'><table id='orders-section1-gridcontainer' data-lianja-gridinlinemargin='5' data-lianja-gridinlinememos='false' data-lianja-gridinlineimageheight='0' data-lianja-gridinlineimagewidth='0' data-lianja-gridlines='true' data-lianja-gridinlineimages='false' data-lianja-hideheaders='false' data-lianja-navbar-height='0' data-lianja-hideactionbar='false' data-lianja-pagination='true' data-lianja-infinite-scroll='false' data-lianja-grid-hyperlink-delegate='' data-lianja-readonly='false' data-lianja-sortable='false' data-lianja-row-dynamic-backcolor='' data-lianja-row-dynamic-forecolor='' data-lianja-grid-properties='Order ID@=#ffffffff@=#000000ff@=ORDERID@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Customer ID@=#ffffffff@=#000000ff@=CUSTOMERID@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Employee ID@=#ffffffff@=#000000ff@=EMPLOYEEID@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Order Date@=#ffffffff@=#000000ff@=ORDERDATE@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Required Date@=#ffffffff@=#000000ff@=REQUIREDDATE@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Shipped Date@=#ffffffff@=#000000ff@=SHIPPEDDATE@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Via@=#ffffffff@=#000000ff@=SHIPVIA@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Freight@=#ffffffff@=#000000ff@=FREIGHT@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Name@=#ffffffff@=#000000ff@=SHIPNAME@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Address@=#ffffffff@=#000000ff@=SHIPADDRESS@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship City@=#ffffffff@=#000000ff@=SHIPCITY@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Region@=#ffffffff@=#000000ff@=SHIPREGION@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Postal Code@=#ffffffff@=#000000ff@=SHIPPOSTALCODE@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Ship Country@=#ffffffff@=#000000ff@=SHIPCOUNTRY@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0' data-lianja-grid-column-types='N,C,N,D,D,D,N,Y,C,C,C,C,C,C' data-lianja-grid-column-widths='49,66,66,72,75,71,48,46,101,74,64,66,87,71' style='margin-bottom:0px;background-color:white;width:100%;overflow:auto;'></table>
+</div></div>
+</div>
+</div>
+<!-- section end -->
+<!-- end content -->
+</div>
+<!-- end page -->
+</div>
+<!-- page -->
+<div class='ui-lianja-stretchlastsection ui-responsive-panel ui-page ui-page-panel ui-lianja-headervisible'  data-lianja-refresh-when-activated='false' data-lianja-margin='0' data-lianja-query-form='false' data-lianja-hideheader='false' data-lianja-phone-navbar='true' data-lianja-nomargin='' data-lianja-stretchfixedheight='0' data-lianja-hidenavbar='true' data-role='page' data-lianja-stretchlastsectionminheight='0' data-lianja-height-offset='20' data-dom-cache='true' data-url='orderdetails' data-lianja-page-autolayoutlist='' data-lianja-page-sectionlist='orderdetails-section1' data-lianja-uistates='' data-lianja-page-type='collapsible' data-lianja-searchkey-section='' id='orderdetails' data-theme='c' data-content-theme='c' data-lianja-headerheight='40' data-lianja-footerheight='0'>
+<div data-role='panel' id='orderdetails_pagenavigationmenu' data-position='right' data-display='overlay' data-theme='a' class='ui-lianja-scrollable ui-lianja-pageheader-item-top ui-panel ui-panel-position-right' style='opacity:0.8 !important; top:40px;width:auto;min-width:300px;'>
+<ul data-role='listview' data-inset='false' data-theme='a' data-icon='false' data-corners='false' data-shadow='false'>
+<li data-role='list-divider' data-theme='a' data-icon='false' data-corners='false' data-shadow='false' style='font-weight:bold !important;color:white;background-color:gray;'>
+PAGE NAVIGATION</li>
+<li class='ui-lianja-permread-customers ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:customers");return false;'>Customers</a></li>
+<li class='ui-lianja-permread-orders ui-lianja-transparent-listitem-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orders");return false;'>Orders</a></li>
+<li class='ui-lianja-permread-orderdetails ui-lianja-transparent-listitem-selected-right' data-corners='false' data-shadow='false' data-theme='a' data-icon='false'><a data-transition='flip' href='#' onclick='Lianja.showDocument("page:orderdetails");return false;'>Order Details</a></li>
+</ul>
+</div>
+<div data-role='panel' data-history='false' id='LianjaDialogPanelLeft-orderdetails' data-swipe-close='true' data-position='left' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelLeftHeader-orderdetails'>Title</h1></div><div id='LianjaDialogPanelLeftContent-orderdetails' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelLeftButtonGroup-orderdetails' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftCancelBtn-orderdetails' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelLeftDoneBtn-orderdetails' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-role='panel' id='LianjaDialogPanel-orderdetails' data-swipe-close='true' data-position='right' data-display='overlay' data-theme='c' style='top:0px !important;bottom:0px !important' class='lianja-ui-dialogpanel'><div data-role='header' data-theme='a' style='border:0;margin:0 !important;'><h1 id='LianjaDialogPanelHeader-orderdetails'>Title</h1></div><div id='LianjaDialogPanelContent-orderdetails' style='overflow:auto;-webkit-overflow-scrolling:touch;overflow-y:scroll;position:absolute;top:40px;bottom:70px;width:100%'><p>This is a simple showDialogPanel popup</p><br></div><table id='LianjaDialogPanelButtonGroup-orderdetails' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:22px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelCancelBtn-orderdetails' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialogPanel(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaDialogPanelDoneBtn-orderdetails' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialogPanel(this)' >Done</div></td></tr></table></div><div data-history='false' id='LianjaPopupDialog-orderdetails' data-corners='false' data-position-to='window' data-transition='fade' data-overlay-theme='a' data-theme='c' style='margin:5px !important;padding:0px !important;display:none;'><a href='' onclick='Lianja.hideDialog(this);return false;' data-role='button' data-theme='a' data-iconshadow='false' data-icon='delete' data-iconpos='notext' class='ui-btn-right'></a><div data-role='header' id='LianjaPopupDialogHeaderContainer-orderdetails' data-corners='false' data-theme='a' style='border-top:3px;border-top-left-radius:0px;margin:0 !important;'><h1 id='LianjaPopupDialogHeader-orderdetails' style='margin:0px !important;'></h1></div><div id='LianjaPopupDialogContent-orderdetails' style='top: 42px;bottom: 50px;position: absolute;width: 100%;'><p>This is a simple showDialog popup</p><br></div><table id='LianjaPopupDialogButtonGroup-orderdetails' height='42px' width="100%" cellspacing="0" cellpadding="0" style="position:absolute;bottom:0px;"><tr><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogCancelBtn-orderdetails' class='lianja-ui-flatbutton lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.hideDialog(this)' >Cancel</div></td><td width='50%' class='lianja-ui-flatbuttoncontainer'><div id='LianjaPopupDialogDoneBtn-orderdetails' class='lianja-ui-flatbutton-last lianja-ui-touchable' style='line-height:42px;height:42px;' onclick='Lianja.applyDialog(this)' >Done</div></td></tr></table></div><div data-tap-toggle='false' data-role='header' data-theme='a' data-position='fixed' data-fullscreen='false' style='height:40px !important;background:#212121;color:#ffffff;border-bottom:1px solid #ffa500;' data-id='alwaysvisible' class='ui-grid-lianja-pageheader {ui-lianja-headervisible-android-statusbar}'>
+<span class='ui-lianja-pageheader-left ui-lianja-pageheader-item' style='height:40px !important;'>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.back();return false;' id='lianja-navigation-left-a' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-left-white' style=''></a></div>
+<div class='ui-grid-lianja-pageheader-navbutton ui-pageheader-navbutton-disabled' align='center'><a type='button' href='' onclick='window.history.forward();return false;' id='lianja-navigation-right-a'  data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext lianja-navigation-right-white' style=''></a></div>
+</span>
+<h1 id='orderdetails-pagetitle' data-lianja-text="Order Details" class='ui-lianja-title-phone ui-lianja-pageheader-item' style='position:relative;left:-26px;'>Order Details</h1>
+<div class='ui-grid-lianja-pageheader-navbutton ui-grid-lianja-pageheader-navbutton-phone-right ui-lianja-pageheader-item-right' align='center'><a type='button' data-ajax='false' href='' onclick='Lianja.logout();return false;' data-role='button' data-theme='reset' data-iconpos='notext' class='app-theme-none ui-btn-icon-notext ui-icon-lianja-home-white' title='Goto the App Center'></a></div>
+</div>
+<!-- content -->
+<div style='top:0px !important' data-lianja-content-bottom='0px' data-lianja-content-margin='0' data-role='content' id='orderdetails-content' data-content-padding-top-bottom='none' class='ui-lianja-content63 ui-lianja-content ui-lianja-notscrollable ui-lianja-hidescrollbar'   style='background-color:#ffffff;color:#ffffff; margin:0px !important;' >
+<!-- section start 2 -->
+<div id='orderdetails-section1'   data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-gridlines='true' data-lianja-orderby="" data-lianja-filter="orderid={orders.orderid}" data-lianja-editable='false' data-lianja-uistates='' data-lianja-gridlines='true' data-lianja-hideheader='true' data-lianja-navbar-height='0' data-lianja-stretchfixedheight='0' data-lianja-query-form='false' data-lianja-cascadedeletes='false' data-lianja-hidenavbar='false' data-lianja-section-pageid='orderdetails' data-lianja-section-type='grid' data-lianja-section-searchfield='' data-lianja-section-searchfieldtype='' data-lianja-section-parentid='' data-lianja-section-parentkeytype='' data-lianja-section-parentkeyexpr='' data-lianja-section-childkeyexpr='' data-lianja-section-childlist='' data-lianja-section-accordion='false' data-lianja-section-accordion-stack='false' data-lianja-database='southwind' data-lianja-table='order_details'  data-inset='false' data-corners='true' class=' rightside   ui-lianja-noicon ui-lianja-noicontext ui-lianja-ignoreclick ui-lianja-collapsible-nostretch   ui-lianja-scrollable ui-lianja-hidescrollbar ' style='position:relative;overflow-y:hidden !important;overflow-x:auto !important;color:#000000;background-color:#f9f9f9;position:absolute;top:0px;left:0px;right:0px;bottom:0px;' data-lianja-autoheight='true' >
+<!-- section type grid -->
+<div id='orderdetails-section1-container-outerframe' data-lianja-yoffset='48' style='background-color:#f9f9f9;width:100%;position:absolute;top:0px;bottom:0px;'>
+<div id='orderdetails-section1-container-innerframe' data-lianja-height-adjustment='0' style='background-color:#f9f9f9;margin:0px;margin-bottom:0px;position:position:relative;height:100%;'><center><div class="ui-lianja-phonegap-hidden ui-lianja-inherit-colors" data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false" data-shadow="false" style="margin:0 0!important;padding-top:10px;height:38px;max-height:38px;background-color:#333333;color:#bababa;"><a class='ui-lianja-link' data-role='button' onclick='page1_section1_customsectionmenu("Customers");return false;' >Customers</a><a class='ui-lianja-link' data-role='button' onclick='page1_section1_customsectionmenu("Orders");return false;' >Orders</a></div></center><div id='orderdetails-section1-gridcontainer-basecontainer' style='background-color:white;position:absolute;top:48px;bottom:0px;width:100%;'><table id='orderdetails-section1-gridcontainer' data-lianja-gridinlinemargin='5' data-lianja-gridinlinememos='false' data-lianja-gridinlineimageheight='0' data-lianja-gridinlineimagewidth='0' data-lianja-gridlines='true' data-lianja-gridinlineimages='false' data-lianja-hideheaders='false' data-lianja-navbar-height='0' data-lianja-hideactionbar='false' data-lianja-pagination='true' data-lianja-infinite-scroll='false' data-lianja-grid-hyperlink-delegate='' data-lianja-readonly='false' data-lianja-sortable='false' data-lianja-row-dynamic-backcolor='' data-lianja-row-dynamic-forecolor='' data-lianja-grid-properties='Order ID@=#ffffffff@=#000000ff@=ORDERID@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Product ID@=#ffffffff@=#000000ff@=PRODUCTID@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Unit Price@=#ffffffff@=#000000ff@=UNITPRICE@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|Quantity@=#ffffffff@=#000000ff@=QUANTITY@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0|discount@=#ffffffff@=#000000ff@=DISCOUNT@=@=@=@=@=false@=@=@=@=@=@=@=false@=@=@=true@=false@=Auto@=0@=false@=Custom@=false@=false@=@=@=false@=@=@=true@=true@=true@=true@=Always@=hidden:false@=@=0' data-lianja-grid-column-types='N,N,N,N,N' data-lianja-grid-column-widths='49,59,56,52,40' style='margin-bottom:0px;background-color:white;width:100%;overflow:auto;'></table>
+</div></div>
+</div>
+</div>
+<!-- section end -->
+<!-- end content -->
+</div>
+<!-- end page -->
+</div>
+<script>
+var lianja_datamap = {
+};
+
+Lianja.setDataMap(lianja_datamap);
+var lianja_iframemap = {
+};
+
+Lianja.setIframeMap(lianja_iframemap);
+</script>
+<script>
+var lianja_pagetransitionmap = {
+"customers":"Flip"
+,"orderdetails":"Flip"
+,"orders":"Flip"
+};
+
+Lianja.setPageTransitionMap(lianja_pagetransitionmap);
+</script>
+<script>
+Lianja.App.addPages('customers,orders,orderdetails');
+Lianja.App.getPage('customers').addSections('section1', 'form');
+Lianja.App.getPage('customers').getSection('section1').addFormItems('field1,field2,field3,field4,field5,field6,field7,field8,field9,field10,field11','C,C,C,C,C,C,C,C,C,C,C', 'form');
+Lianja.App.getPage('orders').addSections('section1', 'grid');
+Lianja.App.getPage('orderdetails').addSections('section1', 'grid');
+</script>
+<script>
+Lianja.ready = false;
+Lianja.pendingsplitviews = [];</script>
+<script>
+$('#customers').on('pageshow', function(event) {
+    Lianja.loadPage('customers');
+});
+$('#orders').on('pageshow', function(event) {
+    Lianja.loadPage('orders');
+});
+$('#orderdetails').on('pageshow', function(event) {
+    Lianja.loadPage('orderdetails');
+});
+</script>
+<script>
+Lianja.createCustomUICode = function() {
+}
+
+
+Lianja.createCanvasSections = function() {
+}
+
+
+Lianja.createCustomSections = function() {
+}
+
+
+Lianja.createCustomGadgets = function() {
+}
+
+
+Lianja.App.delegates = [
+
+];
+
+
+Lianja.App.imports = [
+
+];
+Lianja.registerImports(Lianja.App.imports);
+
+Lianja.App.name = 'example_mobileapp1';
+Lianja.App.targetui = 'phone';
+Lianja.App.ostype = 'android';
+Lianja.App.buildmode = 'debug';
+Lianja.App.theme = 'default';
+Lianja.App.texttranslator = '';
+Lianja.App.phonegap = true;
+Lianja.App.baseurl = 'http://192.168.254.122:8001/';
+Lianja.App.liveview = false;
+Lianja.App.fullscreen = true;
+Lianja.App.statusbarheight = 0;
+Lianja.App.database = 'southwind';
+Lianja.App.animationsenabled = true;
+Lianja.App.locale = 'en';
+Lianja.App.currency = '$';
+Lianja.App.point = '.';
+Lianja.App.separator = ',';
+Lianja.App.attributes['htmlEditor'] = 'Desktop';
+$(document).on('deviceready', function(){
+    Lianja.ready = true;
+    Lianja.resize();
+    Lianja.App.loginpage = 'lianja-loginpage';
+    Lianja.App.homepage = 'customers';
+    $('.mainbody').css('overflow-y', 'hidden');
+    $('.mainbody').css('overflow-x', 'hidden');
+    $('.mainbody').css('display', 'block');
+    if (Lianja.pendingsplitviews.length > 0) Lianja.setupSplitViews();
+    Lianja.createCustomUICode();
+    Lianja.createCanvasSections();
+    Lianja.createCustomSections();
+    Lianja.createCustomGadgets();
+    Lianja.bindDelegates();
+    Lianja.bindGestures();
+    Lianja.callDelegates('init');
+    Lianja.callDelegates('load');
+    Lianja.callDelegates('ready');
+    Lianja.callDelegates('resized');
+    $.mobile.changePage('#lianja-loginpage');
+    Lianja.checkOrientationLayout();
+    Lianja.adjustPhoneGapUI();
+    Lianja.updateLoginPanel();
+    Lianja.loadIframes();
+    window.addEventListener('load', function() {
+        if (typeof FastClick !== 'undefined') FastClick.attach(document.body);
+    }, false);
+    document.addEventListener('pause', Lianja.App.onPause, false);
+    document.addEventListener('resume', Lianja.App.onPause, false);
+    document.addEventListener('menubutton', Lianja.App.onMenuButton, false);
+});
+Lianja.App.init();
+Lianja.App.initExtensions();
+</script>
+</body>
+</html>

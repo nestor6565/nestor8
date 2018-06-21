@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget 
+	id="" 
+	version="0.1" 
+	xmlns="http://www.w3.org/ns/widgets" 
+	xmlns:gap="http://phonegap.com/ns/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	>
+	<gap:platform name="android" />
+    <name>example_mobileapp1</name>
+    <description>example_mobileapp1 Release Android Phone</description>
+    <author email="unspecified email" href="unspecified infolink">unspecified author</author>
+    <content src="index.html" />
+	<preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="android-windowSoftInputMode" value="adjustResize" />	
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="true" />
+    <preference name="ios-statusbarstyle" value="default" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="true" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-installLocation" value="auto" />
+	<preference name="android-build-tool" value="gradle" />
+	<preference name="HideKeyboardFormAccessoryBar" value="true"/>	
+	<preference name="FadeSplashScreen" value="false"/>
+	
+	<gap:config-file platform="android" parent="/manifest"><application android:debuggable="false" /></gap:config-file>
+     <gap:plugin name="cordova-plugin-crosswalk-webview"  source="npm" />
+ <gap:plugin name="cordova-plugin-battery-status"  source="npm" />
+ <gap:plugin name="cordova-plugin-camera"  source="npm" />
+ <gap:plugin name="cordova-plugin-media-capture"  source="npm" />
+ <gap:plugin name="cordova-plugin-console"  source="npm" />
+ <gap:plugin name="cordova-plugin-contacts"  source="npm" />
+ <gap:plugin name="cordova-plugin-device"  source="npm" />
+ <gap:plugin name="cordova-plugin-device-motion"  source="npm" />
+ <gap:plugin name="cordova-plugin-device-orientation"  source="npm" />
+ <gap:plugin name="cordova-plugin-dialogs"  source="npm" />
+ <gap:plugin name="cordova-plugin-file"  source="npm" />
+ <gap:plugin name="cordova-plugin-file-transfer"  source="npm" />
+ <gap:plugin name="cordova-plugin-geolocation"  source="npm" />
+ <gap:plugin name="cordova-plugin-globalization"  source="npm" />
+ <gap:plugin name="cordova-plugin-inappbrowser"  source="npm" />
+ <gap:plugin name="cordova-plugin-media"  source="npm" />
+ <gap:plugin name="cordova-plugin-network-information"  source="npm" />
+ <gap:plugin name="cordova-plugin-splashscreen"  source="npm" />
+ <gap:plugin name="cordova-plugin-vibration"  source="npm" />
+ <gap:plugin name="cordova-android-support-gradle-release"  source="npm" />
+
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" /> 
+    <icon src="icon.png" />
+	<gap:splash src="default.png" />
+    <access origin="*" />
+	<allow-intent href="*" />
+	<allow-navigation href="*" />	
+	<access origin="tel:*" launch-external="yes"/>
+	<access origin="geo:*" launch-external="yes"/>
+	<access origin="mailto:*" launch-external="yes"/>
+	<access origin="sms:*" launch-external="yes"/>
+	<access origin="market:*" launch-external="yes"/>
+    <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="www/res/icon/android/icon-96-xhdpi.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
+</widget>
